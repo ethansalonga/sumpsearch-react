@@ -1,10 +1,16 @@
+import {
+  RiSwordFill,
+  RiShieldFill,
+  RiScales3Fill,
+  RiBookOpenFill,
+} from "react-icons/ri"
 import "./Search.css"
 
 function Search() {
   return (
     <section id="search">
       <div
-        className="progress-bar indeterminate theme-default"
+        className="search-progress-bar indeterminate theme-default"
         style={{ position: "absolute", top: "0px", left: "0px", right: "0px" }}
       >
         <div className="progress-bar-track"></div>
@@ -95,8 +101,8 @@ function Search() {
         </div>
       </div>
       <div id="champions">
-        <div className="content-wrapper">
-          <div className="loading-state flex justify-center">
+        <div className="content-wrapper championCards">
+          {/* <div className="loading-state flex justify-center">
             <svg
               data-v-cf78a876=""
               data-v-ca62299c=""
@@ -117,6 +123,43 @@ function Search() {
                 className=""
               ></path>
             </svg>
+          </div> */}
+          <div className="championCard flex flex-col">
+            <img
+              src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg"
+              className="championCard__image"
+            />
+            <div className="championCard__name">
+              Akali{" "}
+              <span className="championCard__title">the Rogue Assassin</span>
+            </div>
+            <div className="championCard__stats">
+              <div className="stat">
+                <p className="stats__text">
+                  <RiSwordFill style={{ marginRight: "2px" }} />
+                  <span className="stats__textLabel">Attack</span>
+                </p>
+              </div>
+              <div className="stat">
+                <p className="stats__text">
+                  <RiShieldFill style={{ marginRight: "2px" }} />
+                  <span className="stats__textLabel">Defense</span>
+                </p>
+              </div>
+              <div className="stat">
+                <p className="stats__text">
+                  <RiBookOpenFill style={{ marginRight: "2px" }} />
+                  <span className="stats__textLabel">Magic</span>
+                </p>
+              </div>
+              <div className="stat">
+                <p className="stats__text">
+                  <RiScales3Fill style={{ marginRight: "2px" }} />
+                  <span className="stats__textLabel">Difficulty</span>
+                </p>
+              </div>
+            </div>
+            <div className="championCard__roles">Roles: Assassin</div>
           </div>
         </div>
       </div>

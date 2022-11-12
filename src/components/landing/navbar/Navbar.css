@@ -22,7 +22,7 @@
 
 .navlink {
   position: relative;
-  color: #324b4d;
+  color: #324b4d !important;
 }
 
 .navlink:after {
@@ -44,7 +44,7 @@
 }
 
 .router-link-active {
-  color: #00adb5;
+  color: #00adb5 !important;
 }
 
 .router-link-active:after {
@@ -59,7 +59,7 @@
   padding: 12px 40px;
   border: 2px #00adb5;
   border-radius: 50px;
-  color: #fff;
+  color: #fff !important;
   background-color: #00adb5;
   font-size: 14px;
   font-weight: 700;

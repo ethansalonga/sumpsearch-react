@@ -21,7 +21,7 @@
 
 .explore__navlink {
   position: relative;
-  color: #fff;
+  color: #fff !important;
 }
 
 .explore__navlink:after {

@@ -12,7 +12,12 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+p {
+  margin: 0;
 }
 
 ::selection {
@@ -30,6 +35,10 @@ a {
 
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .justify-between {

@@ -1,3 +1,4 @@
+import { Progress } from "@chakra-ui/react"
 import {
   RiSwordFill,
   RiShieldFill,
@@ -139,24 +140,52 @@ function Search() {
                   <RiSwordFill style={{ marginRight: "2px" }} />
                   <span className="stats__textLabel">Attack</span>
                 </p>
+                <Progress
+                  value={50}
+                  hasStripe
+                  height="18px"
+                  colorScheme="red"
+                  style={{ flexGrow: "1", borderRadius: "6px" }}
+                />
               </div>
               <div className="stat">
                 <p className="stats__text">
                   <RiShieldFill style={{ marginRight: "2px" }} />
                   <span className="stats__textLabel">Defense</span>
                 </p>
+                <Progress
+                  value={30}
+                  hasStripe
+                  height="18px"
+                  colorScheme="green"
+                  style={{ flexGrow: "1", borderRadius: "6px" }}
+                />
               </div>
               <div className="stat">
                 <p className="stats__text">
                   <RiBookOpenFill style={{ marginRight: "2px" }} />
                   <span className="stats__textLabel">Magic</span>
                 </p>
+                <Progress
+                  value={80}
+                  hasStripe
+                  height="18px"
+                  colorScheme="blue"
+                  style={{ flexGrow: "1", borderRadius: "6px" }}
+                />
               </div>
               <div className="stat">
                 <p className="stats__text">
                   <RiScales3Fill style={{ marginRight: "2px" }} />
                   <span className="stats__textLabel">Difficulty</span>
                 </p>
+                <Progress
+                  value={70}
+                  hasStripe
+                  height="18px"
+                  colorScheme="purple"
+                  style={{ flexGrow: "1", borderRadius: "6px" }}
+                />
               </div>
             </div>
             <div className="championCard__roles">Roles: Assassin</div>

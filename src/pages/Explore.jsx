@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Navbar from "../components/explore/navbar/Navbar"
 import Search from "../components/explore/search/Search"
+import { ChakraProvider } from "@chakra-ui/react"
 
 function Explore() {
   const [champions, setChampions] = useState([])
@@ -21,12 +22,14 @@ function Explore() {
   }, [champions])
 
   return (
-    <div className="explore">
-      <div className="flex flex-col flex-1">
-        <Navbar />
-        <Search />
+    <ChakraProvider>
+      <div className="explore">
+        <div className="flex flex-col flex-1">
+          <Navbar />
+          <Search />
+        </div>
       </div>
-    </div>
+    </ChakraProvider>
   )
 }
 

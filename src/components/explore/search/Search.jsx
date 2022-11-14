@@ -26,80 +26,47 @@ function Search() {
         <h1 className="search-info">
           <span className="black-text">Search results:</span>
         </h1>
-        <div className="price-filter flex flex-col">
+        <div className="role-filter flex flex-col justify-center">
           <h2 className="filter__title">
             <span
               className="black-text"
               style={{ marginRight: "8px" }}
             >
-              Price range:
+              Filter by role:
             </span>
-            450 to 7800 BE
           </h2>
-          <div className="slider-wrapper">
-            <div
-              role="slider"
-              aria-valuemin="0"
-              aria-valuemax="100000"
-              aria-orientation="horizontal"
-              className="el-slider"
-              aria-valuetext="0-100000"
-              aria-label="slider between 0 and 100000"
-            >
-              <div className="el-slider__runway">
-                <div
-                  className="el-slider__bar"
-                  style={{ width: "100%", left: "0%" }}
-                ></div>
-                <div
-                  tabIndex="0"
-                  className="el-slider__button-wrapper"
-                  style={{ left: "0%" }}
-                >
-                  <div
-                    className="el-tooltip el-slider__button"
-                    aria-describedby="el-tooltip-3771"
-                    tabIndex="0"
-                  ></div>
-                </div>
-                <div
-                  tabIndex="0"
-                  className="el-slider__button-wrapper"
-                  style={{ left: "100%" }}
-                >
-                  <div
-                    className="el-tooltip el-slider__button"
-                    aria-describedby="el-tooltip-7000"
-                    tabIndex="0"
-                  ></div>
-                </div>
-                <div>
-                  <div
-                    className="el-slider__stop el-slider__marks-stop"
-                    style={{ left: "0%" }}
-                  ></div>
-                  <div
-                    className="el-slider__stop el-slider__marks-stop"
-                    style={{ left: "100%" }}
-                  ></div>
-                </div>
-                <div className="el-slider__marks">
-                  <div
-                    className="el-slider__marks-text"
-                    style={{ left: "0%" }}
-                  >
-                    450 BE
-                  </div>
-                  <div
-                    className="el-slider__marks-text"
-                    style={{ left: "100%" }}
-                  >
-                    7800 BE
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h3 className="filtersContainer flex flex-wrap">
+            <label className="filterSelection">
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+              Assassin
+            </label>
+            <label className="filterSelection">
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+              Fighter
+            </label>
+            <label className="filterSelection">
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+              Mage
+            </label>
+            <label className="filterSelection">
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+              Marksman
+            </label>
+            <label className="filterSelection">
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+              Support
+            </label>
+            <label className="filterSelection">
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+              Tank
+            </label>
+          </h3>
         </div>
       </div>
       <div id="champions">

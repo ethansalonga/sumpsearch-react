@@ -313,6 +313,13 @@
   width: 30%;
   border-radius: 24px;
   box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.45);
+  transition: 300ms scale ease-in-out;
+}
+
+.championCard:hover {
+  cursor: pointer;
+  transition: 300ms scale ease-in-out;
+  scale: 1.1;
 }
 
 .championCard__image {
@@ -345,6 +352,14 @@
 }
 
 .stats__textLabel {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.championCard__roles {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px 18px 10px;
   font-weight: 500;
   font-size: 16px;
 }

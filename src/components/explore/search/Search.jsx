@@ -4,6 +4,7 @@ import {
   RiShieldFill,
   RiScales3Fill,
   RiBookOpenFill,
+  RiTeamFill,
 } from "react-icons/ri"
 import "./Search.css"
 
@@ -137,7 +138,7 @@ function Search() {
             <div className="championCard__stats">
               <div className="stat">
                 <p className="stats__text">
-                  <RiSwordFill style={{ marginRight: "2px" }} />
+                  <RiSwordFill style={{ marginRight: "4px" }} />
                   <span className="stats__textLabel">Attack</span>
                 </p>
                 <Progress
@@ -150,7 +151,7 @@ function Search() {
               </div>
               <div className="stat">
                 <p className="stats__text">
-                  <RiShieldFill style={{ marginRight: "2px" }} />
+                  <RiShieldFill style={{ marginRight: "4px" }} />
                   <span className="stats__textLabel">Defense</span>
                 </p>
                 <Progress
@@ -163,7 +164,7 @@ function Search() {
               </div>
               <div className="stat">
                 <p className="stats__text">
-                  <RiBookOpenFill style={{ marginRight: "2px" }} />
+                  <RiBookOpenFill style={{ marginRight: "4px" }} />
                   <span className="stats__textLabel">Magic</span>
                 </p>
                 <Progress
@@ -176,7 +177,7 @@ function Search() {
               </div>
               <div className="stat">
                 <p className="stats__text">
-                  <RiScales3Fill style={{ marginRight: "2px" }} />
+                  <RiScales3Fill style={{ marginRight: "4px" }} />
                   <span className="stats__textLabel">Difficulty</span>
                 </p>
                 <Progress
@@ -188,7 +189,10 @@ function Search() {
                 />
               </div>
             </div>
-            <div className="championCard__roles">Roles: Assassin</div>
+            <div className="championCard__roles">
+              <RiTeamFill style={{ marginRight: "4px" }} />
+              <span className="stats__textLabel">Roles: Assassin</span>
+            </div>
           </div>
         </div>
       </div>

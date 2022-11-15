@@ -16,22 +16,22 @@ function Explore() {
   }
 
   const getChampions = async () => {
-    await getLatestVersion().then(async () => {
-      const champions = await fetch(
-        `http://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion.json`
-      )
-      const { data } = await champions.json()
-      setChampions(Object.values(data))
-    })
+    const champions = await fetch(
+      `http://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion.json`
+    )
+    const { data } = await champions.json()
+    setChampions(Object.values(data))
   }
 
   useEffect(() => {
-    getChampions()
+    getLatestVersion()
   }, [])
 
   useEffect(() => {
-    console.log(champions)
-  }, [champions])
+    if (latestVersion) {
+      getChampions()
+    }
+  }, [latestVersion])
 
   return (
     <ChakraProvider>

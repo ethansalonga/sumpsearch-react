@@ -1,14 +1,7 @@
-import { Progress } from "@chakra-ui/react"
-import {
-  RiSwordFill,
-  RiShieldFill,
-  RiScales3Fill,
-  RiBookOpenFill,
-  RiTeamFill,
-} from "react-icons/ri"
+import ChampionCard from "./ChampionCard"
 import "./Search.css"
 
-function Search() {
+function Search({ champions }) {
   return (
     <section id="search">
       <div
@@ -24,7 +17,10 @@ function Search() {
         className="content-wrapper justify-between"
       >
         <h1 className="search-info">
-          <span className="black-text">Search results:</span>
+          <span className="black-text searchInfo__title">Search results:</span>
+          <span className="black-text searchInfo__subtitle">
+            Note: Some data may be unavailable from the Data Dragon API
+          </span>
         </h1>
         <div className="role-filter flex flex-col justify-center">
           <h2 className="filter__title">
@@ -93,74 +89,18 @@ function Search() {
               ></path>
             </svg>
           </div> */}
-          <div className="championCard flex flex-col">
-            <img
-              src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg"
-              className="championCard__image"
+          {champions.map(champion => (
+            <ChampionCard
+              image={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
+              name={champion.name}
+              title={champion.title}
+              attack={champion.info.attack}
+              defense={champion.info.defense}
+              magic={champion.info.magic}
+              difficulty={champion.info.difficulty}
+              roles={champion.tags}
             />
-            <div className="championCard__name">
-              Akali{" "}
-              <span className="championCard__title">the Rogue Assassin</span>
-            </div>
-            <div className="championCard__stats">
-              <div className="stat">
-                <p className="stats__text">
-                  <RiSwordFill style={{ marginRight: "4px" }} />
-                  <span className="stats__textLabel">Attack</span>
-                </p>
-                <Progress
-                  value={50}
-                  hasStripe
-                  height="18px"
-                  colorScheme="red"
-                  style={{ flexGrow: "1", borderRadius: "6px" }}
-                />
-              </div>
-              <div className="stat">
-                <p className="stats__text">
-                  <RiShieldFill style={{ marginRight: "4px" }} />
-                  <span className="stats__textLabel">Defense</span>
-                </p>
-                <Progress
-                  value={30}
-                  hasStripe
-                  height="18px"
-                  colorScheme="green"
-                  style={{ flexGrow: "1", borderRadius: "6px" }}
-                />
-              </div>
-              <div className="stat">
-                <p className="stats__text">
-                  <RiBookOpenFill style={{ marginRight: "4px" }} />
-                  <span className="stats__textLabel">Magic</span>
-                </p>
-                <Progress
-                  value={80}
-                  hasStripe
-                  height="18px"
-                  colorScheme="blue"
-                  style={{ flexGrow: "1", borderRadius: "6px" }}
-                />
-              </div>
-              <div className="stat">
-                <p className="stats__text">
-                  <RiScales3Fill style={{ marginRight: "4px" }} />
-                  <span className="stats__textLabel">Difficulty</span>
-                </p>
-                <Progress
-                  value={70}
-                  hasStripe
-                  height="18px"
-                  colorScheme="purple"
-                  style={{ flexGrow: "1", borderRadius: "6px" }}
-                />
-              </div>
-            </div>
-            <div className="championCard__roles">
-              <RiTeamFill style={{ marginRight: "4px" }} />
-              <span className="stats__textLabel">Roles: Assassin</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

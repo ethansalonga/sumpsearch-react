@@ -160,6 +160,17 @@
   padding: 20px 0;
   font-size: 28px;
   line-height: 1.25;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchInfo__title {
+  margin-bottom: 8px;
+}
+
+.searchInfo__subtitle {
+  font-size: 16px;
+  opacity: 0.6;
 }
 
 .role-filter {
@@ -263,8 +274,8 @@
 }
 
 .championCards {
-  justify-content: space-between;
   align-items: center;
+  gap: 48px 5%;
 }
 
 .championCard {

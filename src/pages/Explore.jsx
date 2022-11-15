@@ -10,7 +10,8 @@ function Explore() {
     const champions = await fetch(
       "http://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/champion.json"
     )
-    setChampions(await champions.json())
+    const { data } = await champions.json()
+    setChampions(Object.values(data))
   }
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function Explore() {
       <div className="explore">
         <div className="flex flex-col flex-1">
           <Navbar />
-          <Search />
+          <Search champions={champions} />
         </div>
       </div>
     </ChakraProvider>

@@ -1,11 +1,24 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import LandingImg from "../../../assets/landing-img.png"
 import ArcaneJinxImg from "../../../assets/arcane-jinx.png"
 import "./Main.css"
 
 function Main() {
+  const [championQuery, setChampionQuery] = useState("")
+  const navigate = useNavigate()
+
   const toggleLoading = () => {
     document.querySelector(".btn-search").classList.remove("not-loading")
     document.querySelector(".btn-search").classList += " loading"
+  }
+
+  const handleSearch = () => {
+    sessionStorage.setItem("championQuery", championQuery)
+    toggleLoading()
+    setTimeout(() => {
+      navigate("/explore")
+    }, [2000])
   }
 
   return (
@@ -40,10 +53,13 @@ function Main() {
                   type="text"
                   placeholder="Search by champion name"
                   className="landing__input"
+                  value={championQuery}
+                  onChange={e => setChampionQuery(e.target.value)}
+                  onKeyPress={event => event.key === "Enter" && handleSearch()}
                 />
                 <button
                   className="btn-search not-loading"
-                  onClick={toggleLoading}
+                  onClick={handleSearch}
                 >
                   <svg
                     aria-hidden="true"

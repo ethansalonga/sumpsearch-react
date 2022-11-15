@@ -7,10 +7,6 @@
   font-family: "Open Sans", sans-serif;
 }
 
-body {
-  overflow: hidden;
-}
-
 a {
   text-decoration: none !important;
   color: inherit !important;

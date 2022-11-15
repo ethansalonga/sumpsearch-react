@@ -2,7 +2,13 @@ import { Link } from "react-router-dom"
 import Logo from "../../../assets/sumpsearch-logo.svg"
 import "./Navbar.css"
 
-function Navbar() {
+function Navbar({
+  champions,
+  championQuery,
+  setChampionQuery,
+  setLoading,
+  setFilteredChampions,
+}) {
   let isModalOpen = false
 
   const toggleModal = () => {
@@ -25,6 +31,20 @@ function Navbar() {
 
   const contactAlert = () => {
     alert("This feature has not been implemented for this project.")
+  }
+
+  const handleSearch = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setFilteredChampions(
+        champions.filter(
+          champion =>
+            champion.id.toLowerCase().includes(championQuery) ||
+            champion.name.toLowerCase().includes(championQuery)
+        )
+      )
+      setLoading(false)
+    }, [2000])
   }
 
   return (
@@ -107,8 +127,14 @@ function Navbar() {
             type="text"
             placeholder="Search by champion name"
             className="explore__input"
+            value={championQuery}
+            onChange={e => setChampionQuery(e.target.value)}
+            onKeyPress={event => event.key === "Enter" && handleSearch()}
           />
-          <div className="search-wrapper flex justify-center items-center">
+          <div
+            className="search-wrapper flex justify-center items-center"
+            onClick={handleSearch}
+          >
             <svg
               aria-hidden="true"
               focusable="false"

@@ -31,7 +31,7 @@
   will-change: transform;
 }
 
-/* .progress-bar-track {
+.progress-bar-track {
   left: -150%;
   animation: b 2s linear infinite;
   transform-origin: top left;
@@ -41,7 +41,7 @@
   left: -55%;
   animation: d 2s linear infinite;
   transform-origin: top left;
-} */
+}
 
 .progress-bar-buffer {
   transform-origin: top left;
@@ -55,13 +55,13 @@
   content: " ";
 }
 
-/* .progress-bar-track:after {
+.progress-bar-track:after {
   animation: c 2s linear infinite;
 }
 
 .progress-bar-fill:after {
   animation: e 2s linear infinite;
-} */
+}
 
 .progress-bar-buffer:after {
   display: inline-block;

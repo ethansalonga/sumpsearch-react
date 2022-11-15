@@ -1,11 +1,9 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import LandingImg from "../../../assets/landing-img.png"
 import ArcaneJinxImg from "../../../assets/arcane-jinx.png"
 import "./Main.css"
 
-function Main() {
-  const [championQuery, setChampionQuery] = useState("")
+function Main({ championQuery, setChampionQuery }) {
   const navigate = useNavigate()
 
   const toggleLoading = () => {
@@ -14,7 +12,6 @@ function Main() {
   }
 
   const handleSearch = () => {
-    sessionStorage.setItem("championQuery", championQuery)
     toggleLoading()
     setTimeout(() => {
       navigate("/explore")

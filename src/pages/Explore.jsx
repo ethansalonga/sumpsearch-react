@@ -33,8 +33,11 @@ function Explore({ champions, championQuery, setChampionQuery }) {
             setFilteredChampions={setFilteredChampions}
           />
           <Search
-            champions={filteredChampions}
+            champions={champions}
+            filteredChampions={filteredChampions}
+            setFilteredChampions={setFilteredChampions}
             loading={loading}
+            setLoading={setLoading}
           />
         </div>
       </div>

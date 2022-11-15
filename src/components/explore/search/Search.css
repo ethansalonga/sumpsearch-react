@@ -171,6 +171,29 @@
 .searchInfo__subtitle {
   font-size: 16px;
   opacity: 0.6;
+  margin-bottom: 16px;
+}
+
+.searchInfo__button {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 2rem;
+  border: 2px #9696d8;
+  border-radius: 50px;
+  color: #fff !important;
+  background-color: #9696d8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 350ms ease;
+}
+
+.searchInfo__button:hover {
+  opacity: 0.9;
 }
 
 .role-filter {

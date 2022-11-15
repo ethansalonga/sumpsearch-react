@@ -1,7 +1,21 @@
 import ChampionCard from "./ChampionCard"
 import "./Search.css"
 
-function Search({ champions, loading }) {
+function Search({
+  champions,
+  filteredChampions,
+  setFilteredChampions,
+  loading,
+  setLoading
+}) {
+  const handleViewAll = () => {
+    setLoading(true)
+    setFilteredChampions(champions)
+    setTimeout(() => {
+      setLoading(false)
+    }, [500])
+  }
+
   return (
     <section id="search">
       <div
@@ -21,6 +35,12 @@ function Search({ champions, loading }) {
           <span className="black-text searchInfo__subtitle">
             Note: Empty data may be unavailable from the Data Dragon API
           </span>
+          <button
+            className="searchInfo__button"
+            onClick={handleViewAll}
+          >
+            View all champions
+          </button>
         </h1>
         <div className="role-filter flex flex-col justify-center">
           <h2 className="filter__title">
@@ -91,7 +111,7 @@ function Search({ champions, loading }) {
               </svg>
             </div>
           ) : (
-            champions.map(champion => (
+            filteredChampions.map(champion => (
               <ChampionCard
                 image={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
                 name={champion.name}

@@ -19,7 +19,7 @@ function Search({ champions }) {
         <h1 className="search-info">
           <span className="black-text searchInfo__title">Search results:</span>
           <span className="black-text searchInfo__subtitle">
-            Note: Some data may be unavailable from the Data Dragon API
+            Note: Empty data may be unavailable from the Data Dragon API
           </span>
         </h1>
         <div className="role-filter flex flex-col justify-center">

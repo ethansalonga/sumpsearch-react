@@ -4,14 +4,25 @@ import Search from "../components/explore/search/Search"
 import { ChakraProvider } from "@chakra-ui/react"
 
 function Explore() {
+  const [latestVersion, setLatestVersion] = useState("")
   const [champions, setChampions] = useState([])
 
-  const getChampions = async () => {
-    const champions = await fetch(
-      "http://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/champion.json"
+  const getLatestVersion = async () => {
+    const version = await fetch(
+      "https://ddragon.leagueoflegends.com/api/versions.json"
     )
-    const { data } = await champions.json()
-    setChampions(Object.values(data))
+
+    setLatestVersion((await version.json())[0])
+  }
+
+  const getChampions = async () => {
+    await getLatestVersion().then(async () => {
+      const champions = await fetch(
+        `http://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion.json`
+      )
+      const { data } = await champions.json()
+      setChampions(Object.values(data))
+    })
   }
 
   useEffect(() => {

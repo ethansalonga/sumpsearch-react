@@ -42,6 +42,7 @@ function Explore({ champions, championQuery, setChampionQuery }) {
             setLoading={setLoading}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            setChampionQuery={setChampionQuery}
           />
         </div>
       </div>

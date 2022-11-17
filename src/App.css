@@ -71,3 +71,7 @@ p {
   color: #324b4d;
   display: inline-block;
 }
+
+.hidden {
+  display: none;
+}

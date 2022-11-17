@@ -54,6 +54,7 @@ function Pagination({
       <div className="pageNumbers">
         {pageNumbers.map((number, index) => (
           <button
+            key={number}
             onClick={() => {
               paginate(number)
               window.scrollTo({

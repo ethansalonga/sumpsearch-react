@@ -202,8 +202,51 @@
 }
 
 .filter__title {
-  margin-bottom: 12px;
   font-size: 20px;
+}
+
+.filterClear {
+  align-self: start;
+  margin: 8px 0;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 2rem;
+  border: 2px #9696d8;
+  border-radius: 50px;
+  color: #fff !important;
+  background-color: #00adb5;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 350ms ease;
+}
+
+.filterClear:hover {
+  opacity: 0.9;
+}
+
+.filterClear--disabled {
+  align-self: start;
+  margin: 8px 0;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: auto;
+  height: 2rem;
+  border: 2px #9696d8;
+  border-radius: 50px;
+  background-color: #e0e0e0;
+  color: #828282;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 350ms ease;
 }
 
 .filtersContainer {
@@ -276,6 +319,10 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.filterSelection--disabled {
+  cursor: default;
 }
 
 #champions {

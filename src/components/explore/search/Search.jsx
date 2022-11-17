@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ChampionCard from "./ChampionCard"
 import Pagination from "../../common/Pagination"
 import "./Search.css"
@@ -12,6 +12,84 @@ function Search({
   currentPage,
   setCurrentPage,
 }) {
+  const [checkedAssassin, setCheckedAssassin] = useState(false)
+  const [checkedFighter, setCheckedFighter] = useState(false)
+  const [checkedMage, setCheckedMage] = useState(false)
+  const [checkedMarksman, setCheckedMarksman] = useState(false)
+  const [checkedSupport, setCheckedSupport] = useState(false)
+  const [checkedTank, setCheckedTank] = useState(false)
+  const [clearFiltersEnabled, setClearFiltersEnabled] = useState(false)
+
+  useEffect(() => {
+    setCurrentPage(1)
+
+    if (
+      checkedAssassin ||
+      checkedFighter ||
+      checkedMage ||
+      checkedMarksman ||
+      checkedSupport ||
+      checkedTank
+    ) {
+      setClearFiltersEnabled(true)
+    } else {
+      setClearFiltersEnabled(false)
+    }
+
+    if (checkedAssassin) {
+      setFilteredChampions(prevState =>
+        prevState.filter(champion => champion.tags.includes("Assassin"))
+      )
+    }
+    if (checkedFighter) {
+      setFilteredChampions(prevState =>
+        prevState.filter(champion => champion.tags.includes("Fighter"))
+      )
+    }
+    if (checkedMage) {
+      setFilteredChampions(prevState =>
+        prevState.filter(champion => champion.tags.includes("Mage"))
+      )
+    }
+    if (checkedMarksman) {
+      setFilteredChampions(prevState =>
+        prevState.filter(champion => champion.tags.includes("Marksman"))
+      )
+    }
+    if (checkedSupport) {
+      setFilteredChampions(prevState =>
+        prevState.filter(champion => champion.tags.includes("Support"))
+      )
+    }
+    if (checkedTank) {
+      setFilteredChampions(prevState =>
+        prevState.filter(champion => champion.tags.includes("Tank"))
+      )
+    }
+
+    if (
+      !checkedAssassin &&
+      !checkedFighter &&
+      !checkedMage &&
+      !checkedMarksman &&
+      !checkedSupport &&
+      !checkedTank
+    ) {
+      setFilteredChampions(champions)
+    }
+  }, [
+    checkedAssassin,
+    checkedFighter,
+    checkedMage,
+    checkedMarksman,
+    checkedSupport,
+    checkedTank,
+  ])
+
+  useEffect(() => {
+    console.log(checkedAssassin)
+  }, [checkedAssassin])
+
   // PAGINATION //
   const [champsPerPage] = useState(9)
 
@@ -71,34 +149,111 @@ function Search({
               Filter by role:
             </span>
           </h2>
+          <button
+            className={`${
+              clearFiltersEnabled ? "filterClear" : "filterClear--disabled"
+            }`}
+            onClick={() => {
+              if (clearFiltersEnabled) {
+                setCheckedAssassin(false)
+                setCheckedFighter(false)
+                setCheckedMage(false)
+                setCheckedMarksman(false)
+                setCheckedSupport(false)
+                setCheckedTank(false)
+              }
+            }}
+          >
+            Clear Filters
+          </button>
           <h3 className="filtersContainer flex flex-wrap">
-            <label className="filterSelection">
-              <input type="checkbox" />
+            <label
+              className={`${
+                checkedAssassin && "filterSelection--disabled"
+              } filterSelection`}
+            >
+              <input
+                type="checkbox"
+                checked={checkedAssassin}
+                value={checkedAssassin}
+                onChange={() => setCheckedAssassin(prevState => !prevState)}
+                disabled={checkedAssassin}
+              />
               <span className="checkmark"></span>
               Assassin
             </label>
-            <label className="filterSelection">
-              <input type="checkbox" />
+            <label
+              className={`${
+                checkedFighter && "filterSelection--disabled"
+              } filterSelection`}
+            >
+              <input
+                type="checkbox"
+                checked={checkedFighter}
+                value={checkedFighter}
+                onChange={() => setCheckedFighter(prevState => !prevState)}
+                disabled={checkedFighter}
+              />
               <span className="checkmark"></span>
               Fighter
             </label>
-            <label className="filterSelection">
-              <input type="checkbox" />
+            <label
+              className={`${
+                checkedMage && "filterSelection--disabled"
+              } filterSelection`}
+            >
+              <input
+                type="checkbox"
+                checked={checkedMage}
+                value={checkedMage}
+                onChange={() => setCheckedMage(prevState => !prevState)}
+                disabled={checkedMage}
+              />
               <span className="checkmark"></span>
               Mage
             </label>
-            <label className="filterSelection">
-              <input type="checkbox" />
+            <label
+              className={`${
+                checkedMarksman && "filterSelection--disabled"
+              } filterSelection`}
+            >
+              <input
+                type="checkbox"
+                checked={checkedMarksman}
+                value={checkedMarksman}
+                onChange={() => setCheckedMarksman(prevState => !prevState)}
+                disabled={checkedMarksman}
+              />
               <span className="checkmark"></span>
               Marksman
             </label>
-            <label className="filterSelection">
-              <input type="checkbox" />
+            <label
+              className={`${
+                checkedSupport && "filterSelection--disabled"
+              } filterSelection`}
+            >
+              <input
+                type="checkbox"
+                checked={checkedSupport}
+                value={checkedSupport}
+                onChange={() => setCheckedSupport(prevState => !prevState)}
+                disabled={checkedSupport}
+              />
               <span className="checkmark"></span>
               Support
             </label>
-            <label className="filterSelection">
-              <input type="checkbox" />
+            <label
+              className={`${
+                checkedTank && "filterSelection--disabled"
+              } filterSelection`}
+            >
+              <input
+                type="checkbox"
+                checked={checkedTank}
+                value={checkedTank}
+                onChange={() => setCheckedTank(prevState => !prevState)}
+                disabled={checkedTank}
+              />
               <span className="checkmark"></span>
               Tank
             </label>
@@ -133,6 +288,7 @@ function Search({
           ) : (
             currentChamps.map(champion => (
               <ChampionCard
+                key={champion.id}
                 image={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
                 name={champion.name}
                 title={champion.title}

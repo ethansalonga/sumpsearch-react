@@ -8,6 +8,7 @@ function Navbar({
   setChampionQuery,
   setLoading,
   setFilteredChampions,
+  setCurrentPage,
 }) {
   let isModalOpen = false
 
@@ -34,6 +35,7 @@ function Navbar({
   }
 
   const handleSearch = () => {
+    setCurrentPage(1)
     setLoading(true)
     setTimeout(() => {
       setFilteredChampions(

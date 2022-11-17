@@ -1,4 +1,6 @@
+import { useState } from "react"
 import ChampionCard from "./ChampionCard"
+import Pagination from "../../common/Pagination"
 import "./Search.css"
 
 function Search({
@@ -6,8 +8,23 @@ function Search({
   filteredChampions,
   setFilteredChampions,
   loading,
-  setLoading
+  setLoading,
+  currentPage,
+  setCurrentPage,
 }) {
+  // PAGINATION //
+  const [champsPerPage] = useState(9)
+
+  const indexOfLastChamp = currentPage * champsPerPage
+  const indexOfFirstChamp = indexOfLastChamp - champsPerPage
+  const currentChamps = filteredChampions.slice(
+    indexOfFirstChamp,
+    indexOfLastChamp
+  )
+
+  const paginate = pageNumber => setCurrentPage(pageNumber)
+  // END PAGINATION //
+
   const handleViewAll = () => {
     setLoading(true)
     setFilteredChampions(champions)
@@ -37,7 +54,10 @@ function Search({
           </span>
           <button
             className="searchInfo__button"
-            onClick={handleViewAll}
+            onClick={() => {
+              handleViewAll()
+              setCurrentPage(1)
+            }}
           >
             View all champions
           </button>
@@ -111,7 +131,7 @@ function Search({
               </svg>
             </div>
           ) : (
-            filteredChampions.map(champion => (
+            currentChamps.map(champion => (
               <ChampionCard
                 image={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
                 name={champion.name}
@@ -124,6 +144,13 @@ function Search({
               />
             ))
           )}
+          <Pagination
+            champsPerPage={champsPerPage}
+            totalChamps={filteredChampions.length}
+            paginate={paginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </section>

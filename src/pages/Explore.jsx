@@ -6,6 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 function Explore({ champions, championQuery, setChampionQuery }) {
   const [filteredChampions, setFilteredChampions] = useState([])
   const [loading, setLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     if (championQuery) {
@@ -19,7 +20,7 @@ function Explore({ champions, championQuery, setChampionQuery }) {
     } else {
       setFilteredChampions(champions)
     }
-  }, [])
+  }, [champions])
 
   return (
     <ChakraProvider>
@@ -31,6 +32,7 @@ function Explore({ champions, championQuery, setChampionQuery }) {
             setChampionQuery={setChampionQuery}
             setLoading={setLoading}
             setFilteredChampions={setFilteredChampions}
+            setCurrentPage={setCurrentPage}
           />
           <Search
             champions={champions}
@@ -38,6 +40,8 @@ function Explore({ champions, championQuery, setChampionQuery }) {
             setFilteredChampions={setFilteredChampions}
             loading={loading}
             setLoading={setLoading}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
       </div>

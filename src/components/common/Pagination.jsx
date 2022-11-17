@@ -18,7 +18,8 @@ function Pagination({
       <div className="pageButtons">
         <button
           className={`${
-            currentPage === 1 && "pageButton--disabled"
+            (currentPage === 1 || pageNumbers.length < 1) &&
+            "pageButton--disabled"
           } pageButton`}
           onClick={() => {
             if (currentPage !== 1) {
@@ -35,7 +36,8 @@ function Pagination({
         </button>
         <button
           className={`${
-            currentPage === pageNumbers.length && "pageButton--disabled"
+            (currentPage === pageNumbers.length || pageNumbers.length < 1) &&
+            "pageButton--disabled"
           } pageButton`}
           onClick={() => {
             if (currentPage !== pageNumbers.length) {

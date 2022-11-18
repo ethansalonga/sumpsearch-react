@@ -6,8 +6,10 @@ import {
   RiBookOpenFill,
   RiTeamFill,
 } from "react-icons/ri"
+import { useNavigate } from "react-router-dom"
 
 function ChampionCard({
+  id,
   image,
   name,
   title,
@@ -18,9 +20,13 @@ function ChampionCard({
   roles,
 }) {
   const progressBarMultiplier = 10
+  const navigate = useNavigate()
 
   return (
-    <div className="championCard flex flex-col">
+    <div
+      className="championCard flex flex-col"
+      onClick={() => navigate(`/champion-info/${id}`)}
+    >
       <img
         src={image}
         className="championCard__image"

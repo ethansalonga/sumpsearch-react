@@ -87,10 +87,6 @@ function Search({
     checkedTank,
   ])
 
-  useEffect(() => {
-    console.log(checkedAssassin)
-  }, [checkedAssassin])
-
   // PAGINATION //
   const [champsPerPage] = useState(9)
 
@@ -304,6 +300,7 @@ function Search({
               {currentChamps.map(champion => (
                 <ChampionCard
                   key={champion.id}
+                  id={champion.id}
                   image={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
                   name={champion.name}
                   title={champion.title}

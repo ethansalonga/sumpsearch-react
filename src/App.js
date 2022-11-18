@@ -2,12 +2,23 @@ import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Landing from "./pages/Landing"
 import Explore from "./pages/Explore"
+import ChampionInfo from "./pages/ChampionInfo"
 import "./App.css"
 
 function App() {
   const [championQuery, setChampionQuery] = useState("")
   const [latestVersion, setLatestVersion] = useState("")
   const [champions, setChampions] = useState([])
+
+  useEffect(() => {
+    getLatestVersion()
+  }, [])
+
+  useEffect(() => {
+    if (latestVersion) {
+      getChampions()
+    }
+  }, [latestVersion])
 
   const getLatestVersion = async () => {
     const version = await fetch(
@@ -25,22 +36,13 @@ function App() {
     setChampions(Object.values(data))
   }
 
-  useEffect(() => {
-    getLatestVersion()
-  }, [])
-
-  useEffect(() => {
-    if (latestVersion) {
-      getChampions()
-    }
-  }, [latestVersion])
-
   return (
     <Router>
       <div className="app">
         <Routes>
           <Route path="/" element={<Landing championQuery={championQuery} setChampionQuery={setChampionQuery} />} />
           <Route path="/explore" element={<Explore champions={champions} championQuery={championQuery} setChampionQuery={setChampionQuery} />} />
+          <Route path="/champion-info/:champ_id" element={<ChampionInfo latestVersion={latestVersion} />} />
         </Routes>
       </div>
     </Router>

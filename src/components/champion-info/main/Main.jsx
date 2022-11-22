@@ -6,7 +6,12 @@ import {
   RiScales3Fill,
   RiBookOpenFill,
 } from "react-icons/ri"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Pagination } from "swiper"
 import "./Main.css"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
 
 function Main({ champion }) {
   const progressBarMultiplier = 10
@@ -161,6 +166,30 @@ function Main({ champion }) {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="skinsContainer">
+            <div
+              className="sectionTitle"
+              style={{ marginBottom: "16px" }}
+            >
+              Skins
+            </div>
+            <Swiper
+              navigation={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Navigation, Pagination]}
+              className="skinsSwiper"
+            >
+              {champion.skins.map(skin => (
+                <SwiperSlide>
+                  <img
+                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.num}.jpg`}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </>
       )}

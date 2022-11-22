@@ -8,6 +8,13 @@
 .contentContainer {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #324b4d;
 }
 
 .championImage__container {
@@ -26,11 +33,11 @@
   width: 66%;
 }
 
-.championInfo__rowOne {
+.championInfo__primaryInfo {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .championRoles {
@@ -50,6 +57,10 @@
   font-weight: 600;
 }
 
+.championInfo__lore {
+  margin-bottom: 16px;
+}
+
 .championInfo__stats {
   margin-bottom: 16px;
 }
@@ -63,4 +74,37 @@
   display: flex;
   align-items: center;
   width: 15%;
+}
+
+.championInfo__allyTips {
+  margin-bottom: 16px;
+}
+
+.championInfo__tip {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.championInfo__ability {
+  display: flex;
+  margin-top: 12px;
+}
+
+.championInfo__abilityImg {
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.championInfo__abilityInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.championInfo__abilityName {
+  font-weight: 600;
+  color: #324b4d;
+}
+
+.championInfo__abilityText {
+  font-weight: 500;
 }

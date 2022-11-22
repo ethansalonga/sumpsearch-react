@@ -85,14 +85,27 @@
   margin: 2px 0;
 }
 
+.contentContainer__abilities {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.championInfo__abilityPassive {
+  display: flex;
+  margin: 12px 0 20px 0;
+}
+
 .championInfo__ability {
   display: flex;
-  margin-top: 12px;
+  width: 48%;
 }
 
 .championInfo__abilityImg {
   border-radius: 6px;
   margin-right: 8px;
+  width: 64px;
+  height: 64px;
 }
 
 .championInfo__abilityInfo {
@@ -107,4 +120,12 @@
 
 .championInfo__abilityText {
   font-weight: 500;
+  font-size: 14px;
+}
+
+.championInfo__abilities {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 0;
 }

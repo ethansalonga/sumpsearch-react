@@ -127,23 +127,23 @@ function Main({ champion }) {
               </div>
             </div>
           </div>
-          <div className="contentContainer">
-            <div className="championInfo__abilities">
-              <div className="sectionTitle">Abilities</div>
-              <div className="championInfo__ability">
-                <img
-                  src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/passive/${champion.passive.image.full}`}
-                  className="championInfo__abilityImg"
-                />
-                <div className="championInfo__abilityInfo">
-                  <p className="championInfo__abilityName">
-                    {champion.passive.name} (Passive)
-                  </p>
-                  <p className="championInfo__abilityText">
-                    {champion.passive.description.replace("<br>", " ")}
-                  </p>
-                </div>
+          <div className="contentContainer__abilities">
+            <div className="sectionTitle">Abilities</div>
+            <div className="championInfo__abilityPassive">
+              <img
+                src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/passive/${champion.passive.image.full}`}
+                className="championInfo__abilityImg"
+              />
+              <div className="championInfo__abilityInfo">
+                <p className="championInfo__abilityName">
+                  {champion.passive.name} (Passive)
+                </p>
+                <p className="championInfo__abilityText">
+                  {champion.passive.description.replace("<br>", " ")}
+                </p>
               </div>
+            </div>
+            <div className="championInfo__abilities">
               {champion.spells.map((ability, index) => (
                 <div className="championInfo__ability">
                   <img

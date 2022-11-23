@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import ChampionCard from "./ChampionCard"
 import Pagination from "../../common/Pagination"
+import { RiArrowDownSLine } from "react-icons/ri"
 import "./Search.css"
 
 function Search({
@@ -13,82 +14,21 @@ function Search({
   setCurrentPage,
   setChampionQuery,
 }) {
-  const [checkedAssassin, setCheckedAssassin] = useState(false)
-  const [checkedFighter, setCheckedFighter] = useState(false)
-  const [checkedMage, setCheckedMage] = useState(false)
-  const [checkedMarksman, setCheckedMarksman] = useState(false)
-  const [checkedSupport, setCheckedSupport] = useState(false)
-  const [checkedTank, setCheckedTank] = useState(false)
-  const [clearFiltersEnabled, setClearFiltersEnabled] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [selectedRole, setSelectedRole] = useState("Select role")
+  const dropDownRef = useRef(null)
 
-  useEffect(() => {
-    setCurrentPage(1)
-
-    if (
-      checkedAssassin ||
-      checkedFighter ||
-      checkedMage ||
-      checkedMarksman ||
-      checkedSupport ||
-      checkedTank
-    ) {
-      setClearFiltersEnabled(true)
-    } else {
-      setClearFiltersEnabled(false)
-    }
-
-    if (checkedAssassin) {
-      setFilteredChampions(prevState =>
-        prevState.filter(champion => champion.tags.includes("Assassin"))
-      )
-    }
-    if (checkedFighter) {
-      setFilteredChampions(prevState =>
-        prevState.filter(champion => champion.tags.includes("Fighter"))
-      )
-    }
-    if (checkedMage) {
-      setFilteredChampions(prevState =>
-        prevState.filter(champion => champion.tags.includes("Mage"))
-      )
-    }
-    if (checkedMarksman) {
-      setFilteredChampions(prevState =>
-        prevState.filter(champion => champion.tags.includes("Marksman"))
-      )
-    }
-    if (checkedSupport) {
-      setFilteredChampions(prevState =>
-        prevState.filter(champion => champion.tags.includes("Support"))
-      )
-    }
-    if (checkedTank) {
-      setFilteredChampions(prevState =>
-        prevState.filter(champion => champion.tags.includes("Tank"))
-      )
-    }
-
-    if (
-      !checkedAssassin &&
-      !checkedFighter &&
-      !checkedMage &&
-      !checkedMarksman &&
-      !checkedSupport &&
-      !checkedTank
-    ) {
-      setFilteredChampions(champions)
-    }
-  }, [
-    checkedAssassin,
-    checkedFighter,
-    checkedMage,
-    checkedMarksman,
-    checkedSupport,
-    checkedTank,
-  ])
+  const roles = [
+    { id: "Assassin" },
+    { id: "Fighter" },
+    { id: "Mage" },
+    { id: "Marksman" },
+    { id: "Support" },
+    { id: "Tank" },
+  ]
 
   // PAGINATION //
-  const [champsPerPage] = useState(9)
+  const [champsPerPage] = useState(12)
 
   const indexOfLastChamp = currentPage * champsPerPage
   const indexOfFirstChamp = indexOfLastChamp - champsPerPage
@@ -100,13 +40,32 @@ function Search({
   const paginate = pageNumber => setCurrentPage(pageNumber)
   // END PAGINATION //
 
+  useEffect(() => {
+    setFilteredChampions(champions)
+  }, [])
+
   const handleViewAll = () => {
     setChampionQuery("")
     setLoading(true)
     setFilteredChampions(champions)
+    setSelectedRole("Select role")
     setTimeout(() => {
       setLoading(false)
     }, [500])
+  }
+
+  const openHandler = () => {
+    setDropdownOpen(!dropdownOpen)
+  }
+
+  const selectHandler = id => {
+    const selected = roles.find(el => el.id === id)
+    setSelectedRole(selected.id)
+    setDropdownOpen(false)
+    setCurrentPage(1)
+    setFilteredChampions(
+      champions.filter(champion => champion.tags.includes(id))
+    )
   }
 
   return (
@@ -153,7 +112,8 @@ function Search({
                 Search results:
               </span>
               <span className="black-text searchInfo__subtitle">
-                Note: Empty data may be unavailable from the Data Dragon API
+                Note: Some newer champions may have missing or incorrect data
+                from the Data Dragon API
               </span>
               <button
                 className={`${
@@ -173,8 +133,8 @@ function Search({
             </h1>
             <div
               className={`${
-                champions.length !== filteredChampions.length && "hidden"
-              } role-filter flex flex-col justify-center`}
+                filteredChampions.length === 1 && "hidden"
+              } role-filter flex flex-col`}
             >
               <h2 className="filter__title">
                 <span
@@ -184,115 +144,31 @@ function Search({
                   Filter by role:
                 </span>
               </h2>
-              <button
+              <div
                 className={`${
-                  clearFiltersEnabled ? "filterClear" : "filterClear--disabled"
-                }`}
-                onClick={() => {
-                  if (clearFiltersEnabled) {
-                    setCheckedAssassin(false)
-                    setCheckedFighter(false)
-                    setCheckedMage(false)
-                    setCheckedMarksman(false)
-                    setCheckedSupport(false)
-                    setCheckedTank(false)
-                  }
-                }}
+                  dropdownOpen && "filterDropdown--active"
+                } filterDropdown relative`}
+                onClick={openHandler}
+                ref={dropDownRef}
               >
-                Clear Filters
-              </button>
-              <h3 className="filtersContainer flex flex-wrap">
-                <label
-                  className={`${
-                    checkedAssassin && "filterSelection--disabled"
-                  } filterSelection`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={checkedAssassin}
-                    value={checkedAssassin}
-                    onChange={() => setCheckedAssassin(prevState => !prevState)}
-                    disabled={checkedAssassin}
-                  />
-                  <span className="checkmark"></span>
-                  Assassin
-                </label>
-                <label
-                  className={`${
-                    checkedFighter && "filterSelection--disabled"
-                  } filterSelection`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={checkedFighter}
-                    value={checkedFighter}
-                    onChange={() => setCheckedFighter(prevState => !prevState)}
-                    disabled={checkedFighter}
-                  />
-                  <span className="checkmark"></span>
-                  Fighter
-                </label>
-                <label
-                  className={`${
-                    checkedMage && "filterSelection--disabled"
-                  } filterSelection`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={checkedMage}
-                    value={checkedMage}
-                    onChange={() => setCheckedMage(prevState => !prevState)}
-                    disabled={checkedMage}
-                  />
-                  <span className="checkmark"></span>
-                  Mage
-                </label>
-                <label
-                  className={`${
-                    checkedMarksman && "filterSelection--disabled"
-                  } filterSelection`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={checkedMarksman}
-                    value={checkedMarksman}
-                    onChange={() => setCheckedMarksman(prevState => !prevState)}
-                    disabled={checkedMarksman}
-                  />
-                  <span className="checkmark"></span>
-                  Marksman
-                </label>
-                <label
-                  className={`${
-                    checkedSupport && "filterSelection--disabled"
-                  } filterSelection`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={checkedSupport}
-                    value={checkedSupport}
-                    onChange={() => setCheckedSupport(prevState => !prevState)}
-                    disabled={checkedSupport}
-                  />
-                  <span className="checkmark"></span>
-                  Support
-                </label>
-                <label
-                  className={`${
-                    checkedTank && "filterSelection--disabled"
-                  } filterSelection`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={checkedTank}
-                    value={checkedTank}
-                    onChange={() => setCheckedTank(prevState => !prevState)}
-                    disabled={checkedTank}
-                  />
-                  <span className="checkmark"></span>
-                  Tank
-                </label>
-              </h3>
+                <div className="filterDropdown__text">{selectedRole}</div>
+                <div className="filterDropdown__arrow">
+                  <RiArrowDownSLine />
+                </div>
+                {dropdownOpen && (
+                  <div className="filterDropdown__list">
+                    {roles.map(({ id }) => (
+                      <div
+                        className="filterDropdown__item"
+                        key={id}
+                        onClick={() => selectHandler(id)}
+                      >
+                        {id}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <div id="champions">

@@ -1,10 +1,12 @@
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { Progress } from "@chakra-ui/react"
 import {
   RiSwordFill,
   RiShieldFill,
   RiScales3Fill,
   RiBookOpenFill,
+  RiArrowGoBackLine,
 } from "react-icons/ri"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination } from "swiper"
@@ -14,6 +16,8 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 
 function Main({ champion }) {
+  const navigate = useNavigate()
+
   const progressBarMultiplier = 10
 
   const abilityKey = index => {
@@ -34,9 +38,13 @@ function Main({ champion }) {
   }, [champion])
 
   return (
-    <div className="main">
+    <div className="championInfo__main">
       {champion && (
         <>
+          <RiArrowGoBackLine
+            className="backButton"
+            onClick={() => navigate(-1)}
+          />
           <div className="contentContainer">
             <div className="championImage__container">
               <img

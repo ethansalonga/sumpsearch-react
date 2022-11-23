@@ -1,8 +1,22 @@
-.main {
+.championInfo__main {
   width: 100%;
   max-width: 1200px;
   margin: 32px auto;
   padding: 0 50px;
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 0;
+  font-size: 32px;
+  cursor: pointer;
+  color: #324b4d;
+  transition: all 100ms ease-in-out;
+}
+
+.backButton:hover {
+  opacity: 0.6;
 }
 
 .contentContainer {

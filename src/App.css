@@ -57,14 +57,21 @@ p {
   width: 100%;
 }
 
-.content-wrapper,
-.explore__content-wrapper {
+.content-wrapper {
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   z-index: 2;
+}
+
+.explore__content-wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .black-text {
@@ -78,4 +85,8 @@ p {
 
 .relative {
   position: relative;
+}
+
+.explore {
+  overflow-x: hidden;
 }

@@ -139,3 +139,13 @@
   width: 150px;
   filter: brightness(0) saturate(100%) invert(1);
 }
+
+@media (max-width: 750px) {
+  .navlinks {
+    display: none;
+  }
+
+  #mobile-nav {
+    display: block;
+  }
+}

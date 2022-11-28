@@ -98,19 +98,19 @@ function Navbar({
           <div className="close-btn"></div>
           <div className="showMenu">
             <Link
-              href="/"
+              to="/"
               className="link router-link-exact-active router-link-active"
             >
               Home
             </Link>
             <Link
-              href="/explore"
+              to="/explore"
               className="link"
             >
               Explore Champions
             </Link>
             <Link
-              href=""
+              to=""
               className="link router-link-exact-active router-link-active"
               onClick={contactAlert}
             >

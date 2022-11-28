@@ -16,8 +16,11 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 
 function Main({ champion }) {
-  const navigate = useNavigate()
+  const removeHtml = string => {
+    return string.replace(/<\/?[^>]+(>|$)/g, "")
+  }
 
+  const navigate = useNavigate()
   const progressBarMultiplier = 10
 
   const abilityKey = index => {
@@ -158,7 +161,7 @@ function Main({ champion }) {
                   {champion.passive.name} (Passive)
                 </p>
                 <p className="championInfo__abilityText">
-                  {champion.passive.description.replace("<br>", " ")}
+                  {removeHtml(champion.passive.description)}
                 </p>
               </div>
             </div>
@@ -174,7 +177,7 @@ function Main({ champion }) {
                       {ability.name} {abilityKey(index)}
                     </p>
                     <p className="championInfo__abilityText">
-                      {ability.description}
+                      {removeHtml(ability.description)}
                     </p>
                   </div>
                 </div>

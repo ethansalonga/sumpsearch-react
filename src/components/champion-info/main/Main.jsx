@@ -125,7 +125,10 @@ function Main({ champion }) {
               <div className="championInfo__allyTips">
                 <div className="sectionTitle">{champion.name} Tips</div>
                 {champion.allytips.map((tip, index) => (
-                  <div className="championInfo__tip">
+                  <div
+                    key={index}
+                    className="championInfo__tip"
+                  >
                     {index + 1}. {tip}
                   </div>
                 ))}
@@ -133,7 +136,10 @@ function Main({ champion }) {
               <div className="championInfo__enemyTips">
                 <div className="sectionTitle">Enemy Tips</div>
                 {champion.enemytips.map((tip, index) => (
-                  <div className="championInfo__tip">
+                  <div
+                    key={index}
+                    className="championInfo__tip"
+                  >
                     {index + 1}. {tip}
                   </div>
                 ))}
@@ -192,9 +198,14 @@ function Main({ champion }) {
             >
               {champion.skins.map(skin => (
                 <SwiperSlide>
-                  <img
-                    src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.num}.jpg`}
-                  />
+                  <>
+                    <div className="skinName">
+                      {skin.name === "default" ? champion.name : skin.name}
+                    </div>
+                    <img
+                      src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.num}.jpg`}
+                    />
+                  </>
                 </SwiperSlide>
               ))}
             </Swiper>

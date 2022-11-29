@@ -37,7 +37,10 @@ function ChampionCard({
       <div className="championCard__stats">
         <div className="stat">
           <p className="stats__text">
-            <RiSwordFill style={{ marginRight: "4px" }} />
+            <RiSwordFill
+              style={{ marginRight: "4px" }}
+              className="stats__icon"
+            />
             <span className="stats__textLabel">Attack</span>
           </p>
           <Progress
@@ -50,7 +53,10 @@ function ChampionCard({
         </div>
         <div className="stat">
           <p className="stats__text">
-            <RiShieldFill style={{ marginRight: "4px" }} />
+            <RiShieldFill
+              style={{ marginRight: "4px" }}
+              className="stats__icon"
+            />
             <span className="stats__textLabel">Defense</span>
           </p>
           <Progress
@@ -63,7 +69,10 @@ function ChampionCard({
         </div>
         <div className="stat">
           <p className="stats__text">
-            <RiBookOpenFill style={{ marginRight: "4px" }} />
+            <RiBookOpenFill
+              style={{ marginRight: "4px" }}
+              className="stats__icon"
+            />
             <span className="stats__textLabel">Magic</span>
           </p>
           <Progress
@@ -76,7 +85,10 @@ function ChampionCard({
         </div>
         <div className="stat">
           <p className="stats__text">
-            <RiScales3Fill style={{ marginRight: "4px" }} />
+            <RiScales3Fill
+              style={{ marginRight: "4px" }}
+              className="stats__icon"
+            />
             <span className="stats__textLabel">Difficulty</span>
           </p>
           <Progress

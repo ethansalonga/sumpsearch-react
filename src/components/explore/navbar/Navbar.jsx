@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Logo from "../../../assets/sumpsearch-logo.svg"
 import "./Navbar.css"
@@ -48,6 +49,33 @@ function Navbar({
       setLoading(false)
     }, [2000])
   }
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window
+    return {
+      width,
+      height,
+    }
+  }
+
+  function useWindowDimensions() {
+    const [windowDimensions, setWindowDimensions] = useState(
+      getWindowDimensions()
+    )
+
+    useEffect(() => {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions())
+      }
+
+      window.addEventListener("resize", handleResize)
+      return () => window.removeEventListener("resize", handleResize)
+    }, [])
+
+    return windowDimensions
+  }
+
+  const { height, width } = useWindowDimensions()
 
   return (
     <div className="explore__navbar flex flex-col">
@@ -127,14 +155,16 @@ function Navbar({
         <div className="explore__input-wrapper">
           <input
             type="text"
-            placeholder="Search by champion name"
+            placeholder={`${
+              width < 375 ? "Search by name" : "Search by champion name"
+            }`}
             className="explore__input"
             value={championQuery}
             onChange={e => setChampionQuery(e.target.value)}
             onKeyPress={event => event.key === "Enter" && handleSearch()}
           />
           <div
-            className="search-wrapper flex justify-center items-center"
+            className="search-wrapper flex items-center justify-center"
             onClick={handleSearch}
           >
             <svg

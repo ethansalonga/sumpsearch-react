@@ -140,6 +140,13 @@
   filter: brightness(0) saturate(100%) invert(1);
 }
 
+
+@media (max-width: 375px) {
+  .stats__text {
+    margin-right: 8px;
+  }
+}
+
 @media (max-width: 750px) {
   .navlinks {
     display: none;

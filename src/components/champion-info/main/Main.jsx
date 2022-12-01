@@ -70,7 +70,10 @@ function Main({ champion }) {
               <div className="championInfo__stats">
                 <div className="championInfo__stat">
                   <p className="championInfo__statsText">
-                    <RiSwordFill style={{ marginRight: "4px" }} />
+                    <RiSwordFill
+                      style={{ marginRight: "4px" }}
+                      className="stats__icon"
+                    />
                     <span className="stats__textLabel">Attack</span>
                   </p>
                   <Progress
@@ -84,7 +87,10 @@ function Main({ champion }) {
                 </div>
                 <div className="championInfo__stat">
                   <p className="championInfo__statsText">
-                    <RiShieldFill style={{ marginRight: "4px" }} />
+                    <RiShieldFill
+                      style={{ marginRight: "4px" }}
+                      className="stats__icon"
+                    />
                     <span className="stats__textLabel">Defense</span>
                   </p>
                   <Progress
@@ -98,7 +104,10 @@ function Main({ champion }) {
                 </div>
                 <div className="championInfo__stat">
                   <p className="championInfo__statsText">
-                    <RiBookOpenFill style={{ marginRight: "4px" }} />
+                    <RiBookOpenFill
+                      style={{ marginRight: "4px" }}
+                      className="stats__icon"
+                    />
                     <span className="stats__textLabel">Magic</span>
                   </p>
                   <Progress
@@ -112,7 +121,10 @@ function Main({ champion }) {
                 </div>
                 <div className="championInfo__stat">
                   <p className="championInfo__statsText">
-                    <RiScales3Fill style={{ marginRight: "4px" }} />
+                    <RiScales3Fill
+                      style={{ marginRight: "4px" }}
+                      className="stats__icon"
+                    />
                     <span className="stats__textLabel">Difficulty</span>
                   </p>
                   <Progress

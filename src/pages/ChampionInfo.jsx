@@ -18,7 +18,7 @@ function ChampionInfo({ latestVersion }) {
 
   const getChampionInfo = async () => {
     const champions = await fetch(
-      `http://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion/${champ_id}.json`
+      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion/${champ_id}.json`
     )
     const { data } = await champions.json()
     setChampion(Object.values(data)[0])

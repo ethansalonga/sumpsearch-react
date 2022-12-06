@@ -51,7 +51,7 @@ function Main({ champion }) {
           <div className="contentContainer">
             <div className="championImage__container">
               <img
-                src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`}
+                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`}
                 className="championImage"
               />
             </div>
@@ -165,7 +165,7 @@ function Main({ champion }) {
             <div className="sectionTitle">Abilities</div>
             <div className="championInfo__abilityPassive">
               <img
-                src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/passive/${champion.passive.image.full}`}
+                src={`https://ddragon.leagueoflegends.com/cdn/12.22.1/img/passive/${champion.passive.image.full}`}
                 className="championInfo__abilityImg"
               />
               <div className="championInfo__abilityInfo">
@@ -181,7 +181,7 @@ function Main({ champion }) {
               {champion.spells.map((ability, index) => (
                 <div className="championInfo__ability">
                   <img
-                    src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/spell/${ability.id}.png`}
+                    src={`https://ddragon.leagueoflegends.com/cdn/12.22.1/img/spell/${ability.id}.png`}
                     className="championInfo__abilityImg"
                   />
                   <div className="championInfo__abilityInfo">
@@ -218,7 +218,7 @@ function Main({ champion }) {
                       {skin.name === "default" ? champion.name : skin.name}
                     </div>
                     <img
-                      src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.num}.jpg`}
+                      src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.num}.jpg`}
                     />
                   </>
                 </SwiperSlide>

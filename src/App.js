@@ -30,7 +30,7 @@ function App() {
 
   const getChampions = async () => {
     const champions = await fetch(
-      `http://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion.json`
+      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion.json`
     )
     const { data } = await champions.json()
     setChampions(Object.values(data))

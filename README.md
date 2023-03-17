@@ -10,11 +10,11 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+## About the Project
 
 [![product-screenshot]](https://jovial-kashata-efb2eb.netlify.app/)
 
-[![product-screenshot2]](https://jovial-kashata-efb2eb.netlify.app/champion-info/Jinx)
+[![product-screenshot2]](https://jovial-kashata-efb2eb.netlify.app/)
 
 SumpSearch is a search application that allows you to search and explore the 160+ characters (referred to as champions) in one of my favorite online video games of all time, League of Legends. Search champions by name using the input field or filter by role. Click on a champion's info card to explore in-depth details about them, including lore, stats, tips, abilities, and skins! This app utilizes the official Riot Games Data Dragon API, and the aesthetic theme of this app is based on the Netflix show Arcane.
 

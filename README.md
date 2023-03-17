@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="/public/logo.png" alt="Logo" width="160" height="160">
+  <img src="/public/logo-circle.png" alt="Logo" width="160" height="160">
 
   <h3 align="center">SumpSearch</h3>
 </div>
